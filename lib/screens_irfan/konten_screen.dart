@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:careshareapp2/models/model_konten.dart';
 import 'package:careshareapp2/screens/forum/listforum.dart';
 import 'package:careshareapp2/screens_irfan/konten_detail_screen.dart';
+import 'package:careshareapp2/screens_irfan/login_screen.dart';
+import 'package:careshareapp2/utils/cek_session.dart';
 import 'package:careshareapp2/utils/url.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -123,6 +125,19 @@ class _KontenScreenState extends State<KontenScreen> {
             },
             icon: Icon(Icons.chat),
             color: Colors.black,
+          ),
+          IconButton(
+            onPressed: () {
+              setState(() {
+                session.clearSession();
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => LoginScreen()),
+                    (route) => false);
+              });
+            },
+            icon: Icon(Icons.logout),
+            color: Colors.red,
           ),
         ],
       ),

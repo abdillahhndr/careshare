@@ -6,7 +6,8 @@ class LoginResponse {
   String username;
   String email;
   String id;
-  String address; // Change the type to non-nullable String
+  String address;
+  String level;
 
   LoginResponse({
     required this.value,
@@ -15,6 +16,7 @@ class LoginResponse {
     required this.email,
     required this.id,
     required this.address, // Initialize address in the constructor
+    required this.level,
   });
 
   factory LoginResponse.fromJson(Map<String, dynamic> json) {
@@ -26,7 +28,8 @@ class LoginResponse {
       username: json["username"],
       email: json["email"],
       id: json["id"],
-      address: address, // Assign the address
+      address: address,
+      level: json['level'], // Assign the address
     );
   }
 
@@ -38,6 +41,7 @@ class LoginResponse {
       "email": email,
       "id": id,
       "address": address,
+      "level": level
     };
   }
 }

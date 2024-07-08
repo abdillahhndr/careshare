@@ -76,7 +76,7 @@ class _ForumListScreenState extends State<ForumListScreen> {
                         });
                       },
                       decoration: InputDecoration(
-                        hintText: 'Cari Artikel',
+                        hintText: 'Cari Forum',
                         prefixIcon: Icon(Icons.search),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20),

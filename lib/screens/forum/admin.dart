@@ -2,6 +2,7 @@ import 'package:careshareapp2/screens/forum/detailforum.dart';
 import 'package:careshareapp2/screens/loginscreen.dart';
 import 'package:careshareapp2/screens/mentor/listmentor.dart';
 import 'package:careshareapp2/screens/mentor/listpelangganadmin.dart';
+import 'package:careshareapp2/screens_irfan/login_screen.dart';
 import 'package:careshareapp2/utils/apiservice.dart';
 import 'package:careshareapp2/utils/cek_session.dart';
 import 'package:flutter/material.dart';
@@ -31,46 +32,39 @@ class _ForumListScreenadminState extends State<ForumListScreenadmin> {
       body: Column(
         children: [
           Container(
-            height: 100,
-            width: double.infinity,
-            decoration: const BoxDecoration(
-                color: Color(0xff95D2E6),
-                borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(25),
-                    bottomRight: Radius.circular(25))),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
+            height: 185,
+            child: Stack(
               children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
-                  child: TextField(
-                    controller: _searchController,
-                    decoration: InputDecoration(
-                      prefixIconColor: Color(0xff5B4E3B),
-                      contentPadding: EdgeInsets.symmetric(vertical: 0),
-                      prefixIcon: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 5),
-                        child: Icon(Icons.search, size: 20),
+                Image.asset(
+                  'assets/forum.png', // Path to your image
+                  fit: BoxFit.cover,
+                ),
+                Positioned(
+                  bottom: -0, // Adjust this value to change the overlap
+                  left: 10,
+                  right: 10,
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 25),
+                    child: TextField(
+                      onChanged: (value) {
+                        setState(() {
+                          searchQuery = value;
+                        });
+                      },
+                      decoration: InputDecoration(
+                        hintText: 'Cari Forum',
+                        prefixIcon: Icon(Icons.search),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        filled: true,
+                        fillColor: Color(0xffF6FDFD),
+                        contentPadding: EdgeInsets.symmetric(
+                            vertical: 10), // Adjust the height
                       ),
-                      hintText: "Search",
-                      hintStyle:
-                          TextStyle(fontWeight: FontWeight.w500, fontSize: 14),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30),
-                          borderSide: BorderSide.none),
-                      filled: true,
-                      fillColor: Colors.blue.shade100,
                     ),
-                    onChanged: (value) {
-                      setState(() {
-                        searchQuery = value;
-                      });
-                    },
                   ),
                 ),
-                SizedBox(
-                  height: 20,
-                )
               ],
             ),
           ),
@@ -86,7 +80,8 @@ class _ForumListScreenadminState extends State<ForumListScreenadmin> {
                       session.clearSession();
                       Navigator.pushAndRemoveUntil(
                           context,
-                          MaterialPageRoute(builder: (context) => PageLogin()),
+                          MaterialPageRoute(
+                              builder: (context) => LoginScreen()),
                           (route) => false);
                     });
                   },

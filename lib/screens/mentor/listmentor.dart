@@ -97,7 +97,7 @@ class _MentorListScreenState extends State<MentorListScreen> {
                       controller: txtcari,
                       onChanged: _filterProduct,
                       decoration: InputDecoration(
-                        hintText: 'Cari Artikel',
+                        hintText: 'Cari Mentor',
                         prefixIcon: Icon(Icons.search),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20),

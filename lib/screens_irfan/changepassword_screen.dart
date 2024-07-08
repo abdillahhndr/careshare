@@ -1,4 +1,4 @@
-import 'package:careshareapp2/screens_irfan/login_screen.dart';
+import 'package:careshareapp2/screens_irfan/navbar.dart';
 import 'package:careshareapp2/screens_irfan/profile_screen.dart';
 import 'package:careshareapp2/utils/url.dart';
 import 'package:flutter/material.dart';
@@ -44,7 +44,11 @@ class _ChangePasswordState extends State<ChangePassword> {
               .showSnackBar(SnackBar(content: Text('Password updated')));
         });
         Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => LoginScreen()));
+            context,
+            MaterialPageRoute(
+                builder: (context) => Navbar(
+                      index: 4,
+                    )));
       } else {
         setState(() {
           isLoading = false;

@@ -122,7 +122,7 @@ class _PelangganListScreenState extends State<PelangganListScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: const [
-                      Text('All Mentors',
+                      Text('All Customers',
                           style: TextStyle(
                               fontSize: 20, fontWeight: FontWeight.bold)),
                     ],

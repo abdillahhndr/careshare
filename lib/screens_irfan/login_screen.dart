@@ -1,4 +1,6 @@
 import 'package:careshareapp2/models/login_response.dart';
+import 'package:careshareapp2/screens/forum/admin.dart';
+import 'package:careshareapp2/screens/forum/listforum.dart';
 import 'package:careshareapp2/screens_irfan/navbar.dart';
 import 'package:careshareapp2/screens_irfan/register_screen.dart';
 import 'package:careshareapp2/screens_irfan/verifyemail_screen.dart';
@@ -40,10 +42,20 @@ class _LoginScreenState extends State<LoginScreen> {
 
       if (response.statusCode == 200) {
         setState(() {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => Navbar()),
-          );
+          if (data.level == "0") {
+            Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(builder: (context) => Navbar()),
+                (route) => false);
+          } else {
+            Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => ForumListScreenadmin(
+                          userId: data.id,
+                        )),
+                (route) => false);
+          }
         });
         session.saveSession(data.value ?? 0, data.id ?? "", data.username ?? "",
             data.email ?? "", data.address ?? "");
